@@ -1,0 +1,33 @@
+version: '3'
+services:
+  orborus:
+    #build: ./functions/onprem/orborus
+    image: ghcr.io/shuffle/shuffle-orborus:latest
+    container_name: shuffle-orborus
+    hostname: shuffle-orborus
+    networks:
+      - shuffle
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - BASE_URL=http://SHUFFLE-BACKEND:5001
+      - SHUFFLE_APP_SDK_VERSION=1.1.0
+      - SHUFFLE_WORKER_VERSION=latest
+      - ORG_ID=Shuffle
+      - ENVIRONMENT_NAME=Shuffle
+      - DOCKER_API_VERSION=1.40
+      - SHUFFLE_BASE_IMAGE_NAME=frikky
+      - SHUFFLE_BASE_IMAGE_REGISTRY=ghcr.io
+      - SHUFFLE_BASE_IMAGE_TAG_SUFFIX="-1.0.0"
+      - CLEANUP=true
+      - SHUFFLE_ORBORUS_EXECUTION_TIMEOUT=600
+      - SHUFFLE_WORKER_SERVER_URL=http://shuffle-workers
+      - SHUFFLE_LOGS_DISABLED=true
+      - SHUFFLE_WORKER_IMAGE=ghcr.io/shuffle/shuffle-worker-scale:latest
+      - SHUFFLE_SWARM_NETWORK_NAME=shuffle_swarm_executions
+      - SHUFFLE_SCALE_REPLICAS=1
+      - SHUFFLE_SWARM_CONFIG=run
+    restart: unless-stopped
+networks:
+  shuffle:
+    driver: bridge

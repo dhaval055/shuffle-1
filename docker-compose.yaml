@@ -24,12 +24,12 @@ services:
       - SHUFFLE_BASE_IMAGE_REGISTRY=${SHUFFLE_BASE_IMAGE_REGISTRY}
       - SHUFFLE_BASE_IMAGE_TAG_SUFFIX=${SHUFFLE_BASE_IMAGE_TAG_SUFFIX}
       - CLEANUP=false
-      - SHUFFLE_WORKER_IMAGE=ghcr.io/shuffle/shuffle-worker-scale:latest
-      - SHUFFLE_WORKER_SERVER_URL=http://shuffle-workers
-      - SHUFFLE_SCALE_REPLICAS=1
-      - SHUFFLE_SWARM_CONFIG=run
-      - SHUFFLE_SWARM_NETWORK_NAME=shuffle_swarm_executions
-      - SHUFFLE_LOGS_DISABLED=true
+      # - SHUFFLE_WORKER_IMAGE=ghcr.io/shuffle/shuffle-worker-scale:latest
+      # - SHUFFLE_WORKER_SERVER_URL=http://shuffle-workers
+      # - SHUFFLE_SCALE_REPLICAS=1
+      # - SHUFFLE_SWARM_CONFIG=run
+      # - SHUFFLE_SWARM_NETWORK_NAME=shuffle_swarm_executions
+      # - SHUFFLE_LOGS_DISABLED=true
     restart: unless-stopped
 networks:
   shuffle:

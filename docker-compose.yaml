@@ -10,7 +10,6 @@ services:
       - shuffle
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-    env_file: .env
     environment:
       - BASE_URL=http://${OUTER_HOSTNAME}:5001
       - SHUFFLE_APP_SDK_VERSION=1.1.0
